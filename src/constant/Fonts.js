@@ -11,5 +11,12 @@ const Fonts = {
     medium: 'MontserratMedium',
     semibold: 'MontserratSemiBold',
   },
+  leagueSpartan: {
+    bold: 'LeagueSpartanBold',
+    light: 'LeagueSpartanLight',
+    medium: 'LeagueSpartanMedium',
+    regular: 'LeagueSpartanRegular',
+    semibold: 'LeagueSpartanSemiBold',
+  },
 };
 export default Fonts;

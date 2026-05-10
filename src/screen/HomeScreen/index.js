@@ -1,19 +1,26 @@
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import ScreenWrapper from '../../components/ScreenWrapper/index';
-import  Header  from '../../components/Header/index';
+import SearchBarCmp from '../../components/Header/SearchBarCmp';
+import { Colors } from '../../constant/Colors';
 
 const Home = () => {
   return (
     <ScreenWrapper>
-      <View>
+      <View style={styles.container}>
         <View>
-          <Header />
+          <SearchBarCmp />
         </View>
-
       </View>
     </ScreenWrapper>
   );
 };
 
 export default Home;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Colors.white,
+  },
+});
