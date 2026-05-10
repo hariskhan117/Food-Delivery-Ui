@@ -6,8 +6,9 @@ import { Colors } from '../../constant/Colors';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Fonts from '../../constant/Fonts.js';
 
-const SearchBarCmp = () => {
+const SearchBarCmp = ({ title, subtitle }) => {
   return (
     <View style={styles.main}>
       <View style={styles.searchContainer}>
@@ -16,34 +17,46 @@ const SearchBarCmp = () => {
             <TextInput
               style={styles.txtInput}
               placeholder="Search"
-              placeholderTextColor={'Black'}
+              placeholderTextColor={Colors.text800}
             />
           </View>
           <View style={styles.icon}>
             <MaterialCommunityIcons
               name="tune-variant"
-              size={moderateScale(20)}
+              size={moderateScale(18)}
               color={Colors.white}
             />
           </View>
         </View>
-        <View style={styles.container2}>
-          <Feather
-            name="shopping-cart"
-            size={moderateScale(20)}
-            color={Colors.orange600}
-          />
-          <Ionicons
-            name="notifications-outline"
-            size={moderateScale(20)}
-            color={Colors.orange600}
-          />
-          <FontAwesome
-            name="user-o"
-            size={moderateScale(20)}
-            color={Colors.orange600}
-          />
+        <View style={styles.iconContainer}>
+          <View style={styles.iconWrapper}>
+            <Feather
+              name="shopping-cart"
+              size={moderateScale(20)}
+              color={Colors.orange600}
+            />
+          </View>
+          <View style={styles.iconWrapper}>
+            <Ionicons
+              name="notifications-outline"
+              size={moderateScale(20)}
+              color={Colors.orange600}
+            />
+          </View>
+          <View style={styles.iconWrapper}>
+            <FontAwesome
+              name="user-o"
+              size={moderateScale(20)}
+              color={Colors.orange600}
+            />
+          </View>
         </View>
+      </View>
+      <View style={styles.greetingContainer}>
+        {title ? <Text style={styles.greetingTitle}>{title}</Text> : null}
+        {subtitle ? (
+          <Text style={styles.greetingSubtitle}>{subtitle}</Text>
+        ) : null}
       </View>
     </View>
   );
@@ -53,8 +66,8 @@ export default SearchBarCmp;
 
 const styles = StyleSheet.create({
   main: {
-    height: moderateScale(60),
-    justifyContent: 'center',
+    paddingVertical: verticalScale(10),
+    paddingBottom: scale(40),
     backgroundColor: Colors.yellow500,
   },
   searchContainer: {
@@ -62,8 +75,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
-  txtInput : {
-    fontSize : moderateScale(20)
+  txtInput: {
+    fontSize: moderateScale(12),
+    fontFamily: Fonts.leagueSpartan.light,
   },
   input: {
     flex: 1,
@@ -74,8 +88,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderRadius: moderateScale(20),
     flex: 1,
-    paddingHorizontal: 10,
-    marginHorizontal: 40,
+    paddingHorizontal: scale(7),
+    marginHorizontal: scale(20),
   },
   icon: {
     backgroundColor: Colors.orange600,
@@ -83,8 +97,30 @@ const styles = StyleSheet.create({
     paddingHorizontal: scale(5),
     borderRadius: moderateScale(30),
   },
-  container2: {
+  iconContainer: {
     flexDirection: 'row',
-    marginRight: scale(20),
+    marginRight: scale(10),
+    alignItems: 'center',
+  },
+  iconWrapper: {
+    backgroundColor: Colors.white,
+    paddingVertical: verticalScale(5),
+    paddingHorizontal: scale(5),
+    borderRadius: moderateScale(10),
+    marginRight: verticalScale(7),
+  },
+  greetingContainer: {
+    marginHorizontal: scale(23),
+    marginTop: verticalScale(10),
+  },
+  greetingTitle: {
+    fontSize: moderateScale(30),
+    color: Colors.white,
+    fontFamily: Fonts.leagueSpartan.bold,
+  },
+  greetingSubtitle: {
+    fontSize: moderateScale(13),
+    color: Colors.orange600,
+    fontFamily: Fonts.leagueSpartan.medium,
   },
 });
