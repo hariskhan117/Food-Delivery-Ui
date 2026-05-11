@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.orange300,
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal:scale(27),
+    marginHorizontal:scale(24),
     width: scale(326),
     marginTop: verticalScale(12),
   },
