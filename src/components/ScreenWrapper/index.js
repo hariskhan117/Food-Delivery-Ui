@@ -11,7 +11,7 @@ const ScreenWrapper = ({ children }) => {
         flex: 1,
         paddingTop: insest.top,
         paddingBottom: insest.bottom,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.yellow500,
       }}
     >
       {children}
