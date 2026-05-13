@@ -17,20 +17,30 @@ import { moderateScale, scale, verticalScale } from '../../constant/Scaling';
 import Fonts from '../../constant/Fonts';
 import { RecommendList, Seller } from '../../data/HomeData/index';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 
 const Home = () => {
+  const navigation = useNavigation();
   return (
     <ScreenWrapper>
       <ScrollView>
         <View style={styles.container}>
           <View>
             <SearchBarCmp
+              profile={() => {
+                navigation.navigate('Profile');
+                navigation.openDrawer();
+              }}
+              notification={() => {
+                navigation.navigate('Notification');
+                navigation.openDrawer();
+              }}
               title="Good Morning"
               subtitle="Rise and shine! It's breakfast time"
             />
           </View>
           <View>
-            <Category />
+            <Category isOrangeTheme={false} underLine={true} />
           </View>
           <View>
             <View style={styles.sellerContainer}>

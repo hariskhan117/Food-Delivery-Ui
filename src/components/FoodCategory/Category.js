@@ -39,24 +39,43 @@ const data = [
   },
 ];
 
-const Category = () => {
+const Category = ({
+  selectedCategory,
+  setSelectedCategory,
+  isOrangeTheme,
+  underLine,
+}) => {
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        isOrangeTheme ? styles.orangeBg : styles.whiteBg,
+      ]}
+    >
       <FlatList
         data={data}
         horizontal
         showsHorizontalScrollIndicator={false}
         keyExtractor={item => item.id.toString()}
-        renderItem={({ item }) => (
-          <TouchableOpacity>
-            <View style={styles.categoryContainer}>
-              <Image style={styles.categoryImg} source={item.image} />
-              <Text style={styles.categoryTxt}>{item.title}</Text>
-            </View>
-          </TouchableOpacity>
-        )}
+        renderItem={({ item }) => {
+          const isSelected = selectedCategory === item.title;
+          return (
+            <TouchableOpacity onPress={() => setSelectedCategory(item.title)}>
+              <View
+                style={[
+                  styles.categoryContainer,
+                  isSelected && isOrangeTheme && styles.activeOrangeContainer,
+                  isSelected && !isOrangeTheme && styles.activeWhiteContainer,
+                ]}
+              >
+                <Image style={[styles.categoryImg]} source={item.image} />
+                <Text style={[styles.categoryTxt]}>{item.title}</Text>
+              </View>
+            </TouchableOpacity>
+          );
+        }}
       />
-      <View style={styles.underLine}></View>
+      {underLine ? <View style={styles.underLine}></View> : null}
     </View>
   );
 };
@@ -71,10 +90,21 @@ const styles = StyleSheet.create({
     borderTopRightRadius: scale(30),
     marginTop: verticalScale(-23),
   },
+  orangeBg: { backgroundColor: Colors.orange600 },
+  whiteBg: { backgroundColor: Colors.white },
+  activeOrangeContainer: {
+    backgroundColor: Colors.white,
+    borderTopLeftRadius: scale(25),
+    borderTopRightRadius: scale(25),
+    // paddingBottom : 40
+  },
+  activeWhiteContainer: { backgroundColor: Colors.white },
   categoryContainer: {
     marginTop: verticalScale(20),
     marginLeft: scale(22),
     alignItems: 'center',
+    padding: scale(10),
+    borderRadius: scale(20),
   },
   categoryImg: {
     width: scale(49),
@@ -90,7 +120,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.orange300,
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal:scale(24),
+    marginHorizontal: scale(24),
     width: scale(326),
     marginTop: verticalScale(12),
   },
