@@ -1,4 +1,10 @@
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { moderateScale, scale, verticalScale } from '../../constant/Scaling';
@@ -8,7 +14,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Fonts from '../../constant/Fonts.js';
 
-const SearchBarCmp = ({ title, subtitle }) => {
+const SearchBarCmp = ({ title, subtitle, cart, notification, profile }) => {
   return (
     <View style={styles.main}>
       <View style={styles.searchContainer}>
@@ -29,27 +35,27 @@ const SearchBarCmp = ({ title, subtitle }) => {
           </View>
         </View>
         <View style={styles.iconContainer}>
-          <View style={styles.iconWrapper}>
+          <TouchableOpacity style={styles.iconWrapper} onPress={cart}>
             <Feather
               name="shopping-cart"
               size={moderateScale(20)}
               color={Colors.orange600}
             />
-          </View>
-          <View style={styles.iconWrapper}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.iconWrapper} onPress={notification}>
             <Ionicons
               name="notifications-outline"
               size={moderateScale(20)}
               color={Colors.orange600}
             />
-          </View>
-          <View style={styles.iconWrapper}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.iconWrapper} onPress={profile}>
             <FontAwesome
               name="user-o"
               size={moderateScale(20)}
               color={Colors.orange600}
             />
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.greetingContainer}>
