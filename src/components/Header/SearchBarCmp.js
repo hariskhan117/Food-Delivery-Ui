@@ -13,8 +13,16 @@ import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Fonts from '../../constant/Fonts.js';
+import { useNavigation } from '@react-navigation/native';
+import { useDrawer } from '../../navigation/DrawerContext.js';
 
-const SearchBarCmp = ({ title, subtitle, cart, notification, profile }) => {
+const SearchBarCmp = ({ title, subtitle }) => {
+  const { setDrawerContent } = useDrawer();
+  const navigation = useNavigation();
+  // const openDrawer = type => {
+  //   setDrawerType(type);
+  //   navigation.openDrawer();
+  // };
   return (
     <View style={styles.main}>
       <View style={styles.searchContainer}>
@@ -35,21 +43,42 @@ const SearchBarCmp = ({ title, subtitle, cart, notification, profile }) => {
           </View>
         </View>
         <View style={styles.iconContainer}>
-          <TouchableOpacity style={styles.iconWrapper} onPress={cart}>
+          <TouchableOpacity
+            style={styles.iconWrapper}
+            onPress={() => {
+              setDrawerContent('cart');
+              navigation.openDrawer();
+            }}
+            // onPress={
+            // (() => navigation.navigate('Cart'), navigation.openDrawer())
+            // }
+          >
             <Feather
               name="shopping-cart"
               size={moderateScale(20)}
               color={Colors.orange600}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconWrapper} onPress={notification}>
+          <TouchableOpacity
+            style={styles.iconWrapper}
+            onPress={() => {
+              setDrawerContent('notification');
+              navigation.openDrawer();
+            }}
+          >
             <Ionicons
               name="notifications-outline"
               size={moderateScale(20)}
               color={Colors.orange600}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconWrapper} onPress={profile}>
+          <TouchableOpacity
+            style={styles.iconWrapper}
+            onPress={() => {
+              setDrawerContent('profile');
+              navigation.openDrawer();
+            }}
+          >
             <FontAwesome
               name="user-o"
               size={moderateScale(20)}

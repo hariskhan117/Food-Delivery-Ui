@@ -1,7 +1,7 @@
 export const FoodData = [
   {
     id: '1',
-    name: 'Mexican appetizer',
+    name: 'Mexican Appetizer',
     category: 'Snacks',
     title: 'Tortilla Chips With Toppins',
     rating: '5.0',
@@ -40,7 +40,7 @@ export const FoodData = [
   },
   {
     id: '5',
-    name: 'mushroom risotto',
+    name: 'Mushroom Risotto',
     category: 'Vegan',
     title:
       'Creamy mushroom risotto, cooked to perfection with arborio rice, wild mushrooms, Parmesan cheese, and white wine.',
@@ -50,7 +50,7 @@ export const FoodData = [
   },
   {
     id: '6',
-    name: 'broccoli lasagna',
+    name: 'Broccoli Lasagna',
     category: 'Vegan',
     title:
       'Tender broccoli florets, creamy ricotta cheese, savory marinara sauce, and topped with melted mozzarella.',
@@ -60,7 +60,7 @@ export const FoodData = [
   },
   {
     id: '7',
-    name: 'chocolate brownie',
+    name: 'Chocolate Brownie',
     category: 'Dessert',
     title:
       'premium cocoa, melted chocolate, and a hint of vanilla, creating a moist, fudgy center with a crisp, crackly top.',
@@ -70,7 +70,7 @@ export const FoodData = [
   },
   {
     id: '8',
-    name: 'macarons',
+    name: 'Macarons',
     category: 'Dessert',
     title:
       'Delicate vanilla and chocolate macarons, featuring a crisp outer shell and a smooth.',
@@ -90,7 +90,7 @@ export const FoodData = [
   },
   {
     id: '10',
-    name: 'iced coffee',
+    name: 'Iced Coffee',
     category: 'Drinks',
     title:
       'Espresso, chilled milk, and a touch of sweetness, served over ice for a smooth.',

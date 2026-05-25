@@ -27,33 +27,42 @@ const Menu = () => {
   );
   return (
     <ScreenWrapper>
-      <ScrollView>
-        <View style={styles.main}>
-          <SearchBarCmp />
-
+      <View style={styles.main}>
+        <SearchBarCmp />
+        <View>
           <Category
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
             isOrangeTheme={true}
           />
+        </View>
+        <ScrollView>
+          {/* <View style = {{paddingHorizontal: 10}}> */}
 
-          <View style={styles.sortContainer}>
-            <View style={styles.txtContainer}>
-              <Text style={styles.sortTxt}>Sort By</Text>
-              <Text style={styles.popularTxt}>Popular</Text>
-            </View>
-            <View style={styles.icon}>
-              <MaterialCommunityIcons
-                name="tune-variant"
-                size={moderateScale(12)}
-                color={Colors.white}
-              />
-            </View>
-          </View>
+          {/* </View> */}
+
           <FlatList
             data={filteredData}
+            scrollEnabled={false}
             contentContainerStyle={{ paddingBottom: verticalScale(50) }}
             keyExtractor={item => item.id.toString()}
+            ListHeaderComponent={
+              <>
+                <View style={styles.sortContainer}>
+                  <View style={styles.txtContainer}>
+                    <Text style={styles.sortTxt}>Sort By</Text>
+                    <Text style={styles.popularTxt}>Popular</Text>
+                  </View>
+                  <View style={styles.icon}>
+                    <MaterialCommunityIcons
+                      name="tune-variant"
+                      size={moderateScale(12)}
+                      color={Colors.white}
+                    />
+                  </View>
+                </View>
+              </>
+            }
             renderItem={({ item }) => (
               <View style={styles.itemContainer}>
                 <TouchableOpacity
@@ -80,14 +89,16 @@ const Menu = () => {
                       <Text style={styles.infoPrice}>{item.price}</Text>
                     </View>
                   </View>
-                  <Text style={styles.infoTitle}>{item.title}</Text>
+                  <View style={styles.itemDetailContainer}>
+                    <Text style={styles.infoTitle}>{item.title}</Text>
+                  </View>
                 </TouchableOpacity>
-                <View style={styles.underLine}></View>
+                {/* <View style={styles.underLine}></View> */}
               </View>
             )}
           />
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </ScreenWrapper>
   );
 };
@@ -104,8 +115,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginHorizontal: scale(25),
-    marginTop: verticalScale(10),
-    marginBottom: scale(20),
+    marginVertical: verticalScale(20),
+    backgroundColor: Colors.white,
   },
   txtContainer: {
     flexDirection: 'row',
@@ -130,7 +141,6 @@ const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
     backgroundColor: Colors.white,
-    marginBottom: verticalScale(30),
   },
   img: {
     height: verticalScale(174),
@@ -176,19 +186,18 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.leagueSpartan.regular,
     color: Colors.orange600,
   },
+  itemDetailContainer: {
+    marginHorizontal: scale(25),
+    paddingRight: scale(35),
+    marginBottom: verticalScale(30),
+    borderBottomWidth: 1,
+    // marginHorizontal: scale(20),
+    paddingBottom: verticalScale(20),
+    borderColor: Colors.orangeBase,
+  },
   infoTitle: {
     fontSize: moderateScale(12),
     fontFamily: Fonts.leagueSpartan.light,
     color: Colors.text800,
-    alignItems: 'flex-start',
-    // marginHorizontal: scale(22),
-    paddingHorizontal: scale(32),
-    paddingVertical: verticalScale(5),
-  },
-  underLine: {
-    borderWidth: 1,
-    borderColor: Colors.orangeBase,
-    marginHorizontal: scale(32),
-    marginTop: verticalScale(30),
   },
 });

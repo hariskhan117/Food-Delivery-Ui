@@ -1,33 +1,19 @@
-import { View, Text } from 'react-native';
-import React from 'react';
-import Home from '../screen/HomeScreen';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Colors } from '../constant/Colors';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
-const Tab = createBottomTabNavigator();
+import { createStackNavigator } from '@react-navigation/stack';
+import BottomTabNavigation from './BottomTabNavigation';
+import DrawerNavigation from './DrawerNavigation';
 
-const TabNavigation = () => {
+const Stack = createStackNavigator();
+
+const AppNavigation = () => {
   return (
-    <Tab.Navigator
+    <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarShowLabel : false,
-        tabBarStyle: { backgroundColor: Colors.orange600 },
-        tabBarActiveTintColor: Colors.white,
-        tabBarInactiveTintColor: Colors.white,
       }}
     >
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarIcon: ({size,color}) => (
-          <SimpleLineIcons name='home' size={size} color={color}/>
-          ),
-        }}
-      />
-    </Tab.Navigator>
+      <Stack.Screen name="DrawerScreen" component={DrawerNavigation} />
+    </Stack.Navigator>
   );
 };
 
-export default TabNavigation;
+export default AppNavigation;

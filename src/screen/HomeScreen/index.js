@@ -23,25 +23,18 @@ const Home = () => {
   const navigation = useNavigation();
   return (
     <ScreenWrapper>
-      <ScrollView>
-        <View style={styles.container}>
-          <View>
-            <SearchBarCmp
-              profile={() => {
-                navigation.navigate('Profile');
-                navigation.openDrawer();
-              }}
-              notification={() => {
-                navigation.navigate('Notification');
-                navigation.openDrawer();
-              }}
-              title="Good Morning"
-              subtitle="Rise and shine! It's breakfast time"
-            />
-          </View>
-          <View>
-            <Category isOrangeTheme={false} underLine={true} />
-          </View>
+      <View style={styles.container}>
+        <View>
+          <SearchBarCmp
+            title="Good Morning"
+            subtitle="Rise and shine! It's breakfast time"
+          />
+        </View>
+        <View>
+          <Category isOrangeTheme={false} underLine={true} />
+        </View>
+
+        <ScrollView>
           <View>
             <View style={styles.sellerContainer}>
               <Text style={styles.sellerTitle}>Best Seller</Text>
@@ -137,8 +130,8 @@ const Home = () => {
               )}
             />
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </ScreenWrapper>
   );
 };
