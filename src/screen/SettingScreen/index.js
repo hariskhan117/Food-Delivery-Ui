@@ -42,7 +42,9 @@ const SettingScreen = () => {
     <ScreenWrapper>
       <View style={styles.main}>
         <View>
-          <CheckoutHeader name="less-than" Children="Settings" />
+          <CheckoutHeader name="less-than" Children="Settings"
+          onPress={() => navigation.navigate('Menu')}
+          />
         </View>
 
         <View style={styles.listContainer}>

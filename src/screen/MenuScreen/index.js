@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import SearchBarCmp from '../../components/Header/SearchBarCmp';
 import Category from '../../components/FoodCategory/Category';
@@ -17,11 +17,19 @@ import { moderateScale, scale, verticalScale } from '../../constant/Scaling';
 import Fonts from '../../constant/Fonts';
 import { FoodData } from '../../data/MenuData/index';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const Menu = () => {
   const navigation = useNavigation();
-  const [selectedCategory, setSelectedCategory] = useState('Snacks');
+  const route = useRoute();
+  const initialCategory = route?.params?.selectedCategory || 'Snacks';
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+
+  useEffect(() => {
+    if (route?.params?.selectedCategory) {
+      setSelectedCategory(route?.params?.selectedCategory);
+    }
+  }, [route?.params?.selectedCategory]);
   const filteredData = FoodData.filter(
     item => item.category === selectedCategory,
   );

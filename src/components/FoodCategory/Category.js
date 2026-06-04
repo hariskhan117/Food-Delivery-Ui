@@ -66,8 +66,8 @@ const Category = ({
   underLine,
 }) => {
   const selectedIndex = data.findIndex(item => item.title === selectedCategory);
-  const nextIndex = selectedIndex + 1;
-  const previousIndex = selectedIndex - 1;
+  const nextIndex = selectedIndex !== -1 ? selectedIndex + 1 : -1;
+  const previousIndex = selectedIndex !== -1 ? selectedIndex - 1 : -1;
   // console.log(
   //   'Selected Index',
   //   selectedIndex,
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
 
     // borderWidth: 2,
   },
-  orangeBg: { backgroundColor: Colors.orange600, },
+  orangeBg: { backgroundColor: Colors.orange600 },
   whiteBg: {
     backgroundColor: Colors.white,
     borderBottomWidth: 1,

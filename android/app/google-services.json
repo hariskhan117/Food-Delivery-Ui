@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "619732300730",
+    "project_id": "cravex-43495",
+    "storage_bucket": "cravex-43495.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619732300730:android:593bd34840d088c269e383",
+        "android_client_info": {
+          "package_name": "com.cravex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOkq6RdFYtfpmhtb4J_6Pd_RCPCENXUD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

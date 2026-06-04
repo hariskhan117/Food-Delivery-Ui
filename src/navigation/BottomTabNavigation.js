@@ -15,8 +15,9 @@ import CheckoutHeader from '../components/Header/CheckoutHeader';
 import SettingScreen from '../screen/SettingScreen';
 import NotificationSettingScreen from '../screen/NotificationSettingScreen';
 import PasswordSettingScreen from '../screen/PasswordSettingScreen';
+import Recommend from '../screen/RecommendScreen';
 import { scale, verticalScale } from '../constant/Scaling';
-
+import MyProfile from '../screen/MyProfileDetailScreen';
 const Tab = createBottomTabNavigator();
 const BottomTabNavigation = ({ setDrawerType }) => {
   return (
@@ -102,6 +103,20 @@ const BottomTabNavigation = ({ setDrawerType }) => {
       <Tab.Screen
         name="NotificationSettingScreen"
         component={NotificationSettingScreen}
+        options={{
+          tabBarItemStyle: { display: 'none' },
+        }}
+      />
+      <Tab.Screen
+        name="RecommendScreen"
+        component={Recommend}
+        options={{
+          tabBarItemStyle: { display: 'none' },
+        }}
+      />
+      <Tab.Screen
+        name="MyProfileDetail"
+        component={MyProfile}
         options={{
           tabBarItemStyle: { display: 'none' },
         }}

@@ -25,19 +25,23 @@ import {
 import Button from '../../components/ButtonCmp/Button';
 import { useNavigation } from '@react-navigation/native';
 import { removeFromCart } from '../../store/Slices/CartSlice';
+import { useDrawer } from '../../navigation/DrawerContext';
 
 const Checkout = () => {
   const navigation = useNavigation();
   const Amount = useSelector(state => state.cart.totalAmount);
   const dispatch = useDispatch();
   const cartItems = useSelector(state => state.cart.items);
+  const { setDrawerContent } = useDrawer();
 
   return (
     <ScreenWrapper>
       <ScrollView>
         <View style={styles.main}>
           <CheckoutHeader
-            onPress={() => navigation.openDrawer('cart')}
+            onPress={() => {
+              setDrawerContent('cart'), navigation.openDrawer();
+            }}
             name="less-than"
             Children="Confirm Order"
           />
@@ -83,7 +87,10 @@ const Checkout = () => {
                   <Text style={styles.subtotalTxt}>Subtotal</Text>
                   <Text style={styles.subtotalTxt}>${Amount.toFixed(2)}</Text>
                 </View>
-                <Button children="Place Order" />
+                <Button
+                  children="Place Order"
+                  onPress={() => navigation.navigate('MyOrders')}
+                />
               </View>
             }
             keyExtractor={item => item.id.toString()}
@@ -203,7 +210,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     // justifyContent : 'center'
     alignItems: 'center',
-    // paddingHorizontal : scale(40), 
+    // paddingHorizontal : scale(40),
     // backgroundColor: Colors.yellowBase,
     marginHorizontal: scale(30),
     gap: scale(10),

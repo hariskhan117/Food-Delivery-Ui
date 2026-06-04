@@ -31,10 +31,18 @@ const Home = () => {
           />
         </View>
         <View>
-          <Category isOrangeTheme={false} underLine={true} />
+          <Category
+            isOrangeTheme={false}
+            underLine={true}
+            setSelectedCategory={categoryName =>
+              navigation.navigate('Menu', { selectedCategory: categoryName })
+            }
+          />
         </View>
 
-        <ScrollView>
+        <ScrollView
+          contentContainerStyle={{ paddingBottom: verticalScale(50) }}
+        >
           <View>
             <View style={styles.sellerContainer}>
               <Text style={styles.sellerTitle}>Best Seller</Text>
@@ -98,7 +106,9 @@ const Home = () => {
               data={RecommendList}
               keyExtractor={item => item.id.toString()}
               renderItem={({ item }) => (
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('RecommendScreen')}
+                >
                   <View style={styles.ratingContainer}>
                     <View>
                       <Image

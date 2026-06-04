@@ -16,6 +16,7 @@ import { toggleFavorite } from '../../store/Slices/FavoriteSlice';
 
 const ProductDetail = ({ route }) => {
   const { product } = route.params;
+  const basePrice = Number(product.price.replace('$', ''));
   const favoriteItems =
     useSelector(state => state.favorite?.favoriteItems) || [];
   const isFavorite =
@@ -28,7 +29,6 @@ const ProductDetail = ({ route }) => {
   console.log('cOUNT', count);
   const dispatch = useDispatch();
   const handleAddToCart = () => {
-    console.log('Cart', handleAddToCart);
     const cartItem = {
       ...product,
       quantity: count > 0 ? count : 1,
@@ -88,7 +88,7 @@ const ProductDetail = ({ route }) => {
           </View>
 
           <View style={styles.productPriceContainer}>
-            <Text style={styles.productPrice}>{product.price}</Text>
+            <Text style={styles.productPrice}>${(basePrice * count).toFixed(2)}</Text>
 
             <View style={styles.productAddContainer}>
               <TouchableOpacity

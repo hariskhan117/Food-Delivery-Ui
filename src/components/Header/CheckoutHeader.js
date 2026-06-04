@@ -41,14 +41,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: verticalScale(10),
     paddingBottom: verticalScale(40),
+    alignItems: 'center',
+    position: 'relative',
+
+    justifyContent: 'center',
   },
   headerContainer: {
     // flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: scale(32),
+    position: 'absolute',
+    top: 25,
+    left: 30,
   },
 
   headerTxt: {
@@ -57,8 +60,6 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.leagueSpartan.bold,
   },
   headerContainer2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'row',
   },
 });

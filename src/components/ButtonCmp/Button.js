@@ -4,10 +4,11 @@ import { moderateScale, scale, verticalScale } from '../../constant/Scaling';
 import { Colors } from '../../constant/Colors';
 import Fonts from '../../constant/Fonts';
 
-const Button = ({ children, isOrange }) => {
+const Button = ({ children, isOrange, onPress }) => {
   return (
     <View style={styles.main}>
       <TouchableOpacity
+        onPress={onPress}
         style={[styles.button, isOrange ? styles.orangeBg : styles.button]}
       >
         <Text

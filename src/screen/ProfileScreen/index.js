@@ -1,9 +1,18 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import { moderateScale, scale, verticalScale } from '../../constant/Scaling';
 import { Colors } from '../../constant/Colors';
 import Fonts from '../../constant/Fonts';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/Slices/AuthSlice';
 
 const ProfileData = [
   {
@@ -41,16 +50,33 @@ const ProfileData = [
     title: 'Setting',
     image: require('../../assets/images/setting.png'),
   },
+  // {
+  //   id: '8',
+  //   title: 'Help & FAQs',
+  //   image: require('../../assets/images/faq.png'),
+  // },
+  // {
+  //   id: '9',
+  //   title: 'Setting',
+  //   image: require('../../assets/images/setting.png'),
+  // },
 ];
 
 const ProfileScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   const handleOpenScreen = item => {
     if (item.title === 'Setting') {
       navigation.navigate('Tabs', {
         screen: 'SettingScreen',
       });
     }
+    if (item.title === 'My Profile') {
+      navigation.navigate('Tabs', {
+        screen: 'MyProfileDetail',
+      });
+    }
   };
+
   // const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -64,29 +90,38 @@ const ProfileScreen = ({ navigation }) => {
           <Text style={styles.email}>Loremipsum@email.com</Text>
         </View>
       </View>
-      {ProfileData.map(item => (
-        <TouchableOpacity key={item.id} onPress={() => handleOpenScreen(item)}>
-          <View style={styles.itemContainer}>
-            <View style={styles.iconContainer}>
-              <Image style={styles.icon} source={item.image} />
+      <ScrollView>
+        {ProfileData.map(item => (
+          <TouchableOpacity
+            key={item.id}
+            onPress={() => handleOpenScreen(item)}
+          >
+            <View style={styles.itemContainer}>
+              <View style={styles.iconContainer}>
+                <Image style={styles.icon} source={item.image} />
+              </View>
+              <Text style={styles.title} key={item.id}>
+                {item.title}
+              </Text>
             </View>
-            <Text style={styles.title} key={item.id}>
-              {item.title}
-            </Text>
+            <View style={styles.underLine}></View>
+          </TouchableOpacity>
+        ))}
+        <TouchableOpacity
+          onPress={() => dispatch(logout())}
+          key="Logout-btn"
+          style={styles.itemContainer}
+        >
+          <View style={styles.iconContainer}>
+            <Image
+              style={styles.icon}
+              source={require('../../assets/images/logout.png')}
+            />
           </View>
-          <View style={styles.underLine}></View>
-        </TouchableOpacity>
-      ))}
-      <TouchableOpacity key="Logout-btn" style={styles.itemContainer}>
-        <View style={styles.iconContainer}>
-          <Image
-            style={styles.icon}
-            source={require('../../assets/images/logout.png')}
-          />
-        </View>
 
-        <Text style={styles.title}>Logout</Text>
-      </TouchableOpacity>
+          <Text style={styles.title}>Logout</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 };
